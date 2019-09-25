@@ -1,5 +1,6 @@
 import math
 
+
 def letter_freq(txt):
     txt = txt.lower()
     found_letters = {}
@@ -12,15 +13,13 @@ def letter_freq(txt):
 
 
 def entropy(message):
-    N = len(message)
+    n = len(message)
     letters = letter_freq(message)
     entropy = 0
     for i in letters:
-        n_i = letters[i]
-        p_i = letters[i] / N
+        p_i = letters[i] / n
         entropy += p_i * math.log(p_i, 2)
     return entropy
-
 
 
 if __name__ == "__main__":

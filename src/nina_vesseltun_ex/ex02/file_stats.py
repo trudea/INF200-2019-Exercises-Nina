@@ -1,9 +1,10 @@
 def char_counts(textfilename):
     textstring = open(textfilename).read()
     result = [0]*256
-    for character in textstring:
-        result[ord(character)] += 1
+    for sign in textstring:
+        result[ord(sign)] += 1
     return result
+
 
 if __name__ == '__main__':
 
