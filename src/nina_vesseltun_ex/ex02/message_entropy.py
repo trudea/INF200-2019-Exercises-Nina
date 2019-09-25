@@ -15,10 +15,10 @@ def letter_freq(txt):
 def entropy(message):
     n = len(message)
     letters = letter_freq(message)
-    entropy = 0
+    msg_entropy = 0
     for i in letters:
         p_i = letters[i] / n
-        entropy += p_i * math.log(p_i, 2)
+        msg_entropy += p_i * math.log(p_i, 2)
     return entropy
 
 
