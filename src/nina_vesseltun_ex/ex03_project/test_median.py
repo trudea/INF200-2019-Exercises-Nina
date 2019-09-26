@@ -26,3 +26,11 @@ def test_single():
 def test odd():
     dataset = [1, 2, 3]
     assert median(dataset) == 2
+
+
+
+def test_even():
+    dataset = [1, 2, 3]
+    assert median(dataset) == 2
+
+
