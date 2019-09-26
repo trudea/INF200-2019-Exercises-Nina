@@ -28,7 +28,6 @@ def test odd():
     assert median(dataset) == 2
 
 
-
 def test_even():
     dataset = [1, 2, 3]
     assert median(dataset) == 2
@@ -46,3 +45,7 @@ def test_req_empty():
     assert median([]) == ValueError
 
 
+def test_unchanged():
+    dataset = [1, 2, 3]
+    temp = median(dataset)
+    assert dataset == dataset
