@@ -41,3 +41,8 @@ def test_order():
     assert median(unordered_dataset) == 3 and median(ordered_dataset) ==3 and
     median(reversed_dataset) == 3
 
+
+def test_req_empty():
+    assert median([]) == ValueError
+
+
