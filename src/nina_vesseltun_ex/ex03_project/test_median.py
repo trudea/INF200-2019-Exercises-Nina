@@ -49,3 +49,10 @@ def test_unchanged():
     dataset = [1, 2, 3]
     temp = median(dataset)
     assert dataset == dataset
+
+
+def test_tuple():
+    dataset = (1, 2, 3)
+    assert median(dataset) == 2
+
+    
