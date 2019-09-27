@@ -23,7 +23,7 @@ def test_single():
     assert median(dataset) == 1
 
 
-def test odd():
+def test_odd():
     dataset = [1, 2, 3]
     assert median(dataset) == 2
 
