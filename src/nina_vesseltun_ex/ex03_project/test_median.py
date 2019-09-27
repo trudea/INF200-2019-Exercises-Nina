@@ -4,6 +4,10 @@ __author__ = 'Nina Mariann Vesseltun'
 __email__ = 'nive@nmbu.no'
 
 
+import re
+import pytest
+
+
 def median(data):
     """
     Returns median of data.
@@ -44,7 +48,8 @@ def test_order():
 
 
 def test_req_empty():
-    assert median([]) == ValueError
+    with pytest.raises(Exception)
+        assert
 
 
 def test_unchanged():
