@@ -48,8 +48,8 @@ def test_order():
 
 
 def test_req_empty():
-    with pytest.raises(Exception)
-        assert
+    with pytest.raises(Exception):
+        assert median([])
 
 
 def test_unchanged():
@@ -67,4 +67,6 @@ test_odd()
 test_even()
 test_order()
 test_req_empty()
+test_unchanged()
+test_tuple()
 
