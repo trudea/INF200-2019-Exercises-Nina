@@ -35,10 +35,10 @@ def test_even():
 
 def test_order():
     unordered_dataset = [3, 4, 5, 1, 2]
-    ordered_dataset = [1, 2, 3, 4, 5]
+    ordered_dataset = [1, 2, 3, 4, 5] # burde brukt sorted?
     reversed_dataset = ordered_dataset[::-1]
-    assert median(unordered_dataset) == 3 and median(ordered_dataset) ==3 and
-    median(reversed_dataset) == 3
+    assert (median(unordered_dataset) == 3 and median(ordered_dataset) ==3 and
+    median(reversed_dataset) == 3)
 
 
 def test_req_empty():
