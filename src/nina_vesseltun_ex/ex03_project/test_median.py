@@ -55,4 +55,5 @@ def test_tuple():
     dataset = (1, 2, 3)
     assert median(dataset) == 2
 
-    
+
+test_single()
