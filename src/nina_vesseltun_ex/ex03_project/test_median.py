@@ -4,7 +4,6 @@ __author__ = 'Nina Mariann Vesseltun'
 __email__ = 'nive@nmbu.no'
 
 
-import re
 import pytest
 
 
@@ -19,9 +18,9 @@ def median(data):
         sdata = sorted(data)
         n = len(sdata)
         return (sdata[n // 2] if n % 2 == 1
-            else 0.5 * (sdata[n // 2 - 1] + sdata[n // 2]))
+                else 0.5 * (sdata[n // 2 - 1] + sdata[n // 2]))
     except ValueError as err:
-        raise ValueError
+        raise err
 
 
 def test_single():
@@ -69,4 +68,3 @@ test_order()
 test_req_empty()
 test_unchanged()
 test_tuple()
-

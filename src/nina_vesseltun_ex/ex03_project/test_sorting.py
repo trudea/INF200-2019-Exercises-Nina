@@ -52,6 +52,7 @@ def test_original_unchanged():
     """
     data = [3, 1, 2]
     sorted_data = bubble_sort(data)
+    sorted_data +=1
     assert data == data
 
 
