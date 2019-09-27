@@ -11,11 +11,13 @@ def median(data):
     :param data: An iterable of containing numbers
     :return: Median of data
     """
-
-    sdata = sorted(data)
-    n = len(sdata)
-    return (sdata[n//2] if n % 2 == 1
-        else 0.5 * (sdata[n//2 - 1] + sdata[n//2]))
+    try:
+        sdata = sorted(data)
+        n = len(sdata)
+        return (sdata[n // 2] if n % 2 == 1
+            else 0.5 * (sdata[n // 2 - 1] + sdata[n // 2]))
+    except ValueError as err:
+        raise ValueError
 
 
 def test_single():
@@ -35,10 +37,10 @@ def test_even():
 
 def test_order():
     unordered_dataset = [3, 4, 5, 1, 2]
-    ordered_dataset = [1, 2, 3, 4, 5] # burde brukt sorted?
+    ordered_dataset = [1, 2, 3, 4, 5]  # burde brukt sorted?
     reversed_dataset = ordered_dataset[::-1]
-    assert (median(unordered_dataset) == 3 and median(ordered_dataset) ==3 and
-    median(reversed_dataset) == 3)
+    assert (median(unordered_dataset) == 3 and median(ordered_dataset) == 3 and
+            median(reversed_dataset) == 3)
 
 
 def test_req_empty():
@@ -47,8 +49,7 @@ def test_req_empty():
 
 def test_unchanged():
     dataset = [1, 2, 3]
-    temp = median(dataset)
-    assert dataset == dataset
+    assert dataset is not median(dataset)
 
 
 def test_tuple():
@@ -57,3 +58,8 @@ def test_tuple():
 
 
 test_single()
+test_odd()
+test_even()
+test_order()
+test_req_empty()
+

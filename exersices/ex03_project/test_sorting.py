@@ -3,17 +3,21 @@
 __author__ = 'Nina Mariann Vesseltun'
 __email__ = 'nive@nmbu.no'
 
-def bubble_sort(data):    # endrer koden inne i funksjonen også listen utenfor?
-    copy = list(data)     # er dette ok?
-    for i in range(len(copy)-1):
-        for j in range(len(copy)-i-1):
-            if copy[j] > copy[j+1]:
-                copy[j], copy[j+1] = copy[j+1], copy[j]
+
+def bubble_sort(data):  # endrer koden inne i funksjonen også listen utenfor?
+    copy = list(data)  # er dette ok?
+    for i in range(len(copy) - 1):
+        for j in range(len(copy) - i - 1):
+            if copy[j] > copy[j + 1]:
+                copy[j], copy[j + 1] = copy[j + 1], copy[j]
     return copy
 
+
 def test_empty():
-        """Test that the sorting function works for empty list"""
-    pass
+    """Test that the sorting function works for empty list"""
+
+
+pass
 
 
 def test_single():
