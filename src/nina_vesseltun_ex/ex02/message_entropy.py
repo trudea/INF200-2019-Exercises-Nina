@@ -19,7 +19,7 @@ def entropy(message):
     for i in letters:
         p_i = letters[i] / n
         msg_entropy += p_i * math.log(p_i, 2)
-    return msg_entropy
+    return -msg_entropy
 
 
 if __name__ == "__main__":
