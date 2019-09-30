@@ -1,4 +1,4 @@
-import math
+from math import log2
 
 
 def letter_freq(txt):
@@ -18,7 +18,7 @@ def entropy(message):
     msg_entropy = 0
     for i in letters:
         p_i = letters[i] / n
-        msg_entropy += p_i * math.log(p_i, 2)
+        msg_entropy += p_i * log2(p_i)
     return -msg_entropy
 
 
