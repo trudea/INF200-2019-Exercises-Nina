@@ -63,12 +63,3 @@ def test_unchanged():
 def test_tuple():
     dataset = (1, 2, 3)
     assert median(dataset) == 2
-
-
-test_single()
-test_odd()
-test_even()
-test_order()
-test_req_empty()
-test_unchanged()
-test_tuple()
