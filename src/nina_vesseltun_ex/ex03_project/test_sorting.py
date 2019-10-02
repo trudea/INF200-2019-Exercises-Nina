@@ -4,8 +4,8 @@ __author__ = 'Nina Mariann Vesseltun'
 __email__ = 'nive@nmbu.no'
 
 
-def bubble_sort(datavariable):  # endrer koden inne i funksjonen også listen utenfor?
-    copy = list(datavariable)  # er dette ok?
+def bubble_sort(datavariable):
+    copy = list(datavariable)
     for i in range(len(copy) - 1):
         for j in range(len(copy) - i - 1):
             if copy[j] > copy[j + 1]:
