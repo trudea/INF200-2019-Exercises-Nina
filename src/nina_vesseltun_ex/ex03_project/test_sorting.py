@@ -20,7 +20,7 @@ def test_empty():
 
 def test_single():
     """Test that the sorting function works for single-element list"""
-    assert bubble_sort([1] == [1])
+    assert bubble_sort([1]) == [1]
 
 
 def test_sorted_is_not_original():
@@ -51,9 +51,10 @@ def test_original_unchanged():
     Now data shall still contain [3, 2, 1].
     """
     data = [3, 1, 2]
+    original = data
     sorted_data = bubble_sort(data)
-    sorted_data += 1
-    assert data == data
+    assert sorted_data is not data
+    assert original is data
 
 
 def test_sort_sorted():
@@ -89,4 +90,5 @@ def test_sorting():
     correct_numeric = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     string_data = 'afecdb'
     correct_string = 'abcdef'
-    assert numeric_data == correct_numeric and string_data == correct_string
+    assert (bubble_sort(numeric_data) == correct_numeric and
+            bubble_sort(string_data) == list(correct_string))
