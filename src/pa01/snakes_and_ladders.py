@@ -105,10 +105,8 @@ def multi_game_experiment(num_games, num_players, seed):
     num_moves : list
         List with the number of moves needed in each game.
     """
-    num_moves = []
     random.seed(seed)
-    for i in range(num_games):
-        num_moves.append(single_game(num_players))
+    num_moves = multiple_games(num_games, num_players)
     return num_moves
 
 
