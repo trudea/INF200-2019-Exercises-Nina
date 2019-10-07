@@ -6,8 +6,6 @@ __email__ = 'nive@nmbu.no', 'elinbj@nmbu.no'
 
 import random
 import statistics
-import numpy as np
-import matplotlib.pyplot as plt
 
 
 def chute_or_ladder(position):
@@ -117,4 +115,3 @@ if __name__ == '__main__':
           f'Median: {statistics.median(durations)}\n'
           f'Mean duration: {statistics.mean(durations)}\n'
           f'Standard deviation: {statistics.stdev(durations)}')
-    plt.plot(durations)
