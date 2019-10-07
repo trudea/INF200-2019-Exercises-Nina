@@ -5,9 +5,22 @@ __email__ = 'nive@nmbu.no', 'elinbj@nmbu.no'
 
 
 import random
+import statistics
+
 
 def chute_or_ladder(position):
+    """
+    Changes position if player landed on chute or ladder
+    Parameters
+    ----------
+    position : int
 
+    Returns
+    -------
+    new_position : int
+        changes if player landed on chute or ladder
+
+    """
     from_position = [1, 8, 36, 43, 49, 65, 68, 24, 33, 42, 56, 64, 74, 87]
     to_position = [40, 10, 52, 62, 79, 82, 85, 5, 3, 30, 37, 27, 12, 70]
     if position in from_position:
@@ -37,7 +50,7 @@ def single_game(num_players):
         player_position.append(0)  # everybody starts at position 0
         player_moves.append(0)  # starts with 0 moves
     play = True
-    winning_moves = 0
+    num_moves = 0
     while play is True:
         for player in range(num_players):
             dice = random.randint(1, 6)
@@ -45,9 +58,10 @@ def single_game(num_players):
             player_moves[player] += 1
             player_position[player] = chute_or_ladder(player_position[player])
             if player_position[player] >= 90:
-                winning_moves = player_moves[player]
+                num_moves = player_moves[player]
                 play = False
-    return winning_moves
+    return num_moves
+
 
 def multiple_games(num_games, num_players):
     """
@@ -63,8 +77,12 @@ def multiple_games(num_games, num_players):
     Returns
     -------
     num_moves : list
-        List with the numbedr of moves needed in each game.
+        List with the number of moves needed in each game.
     """
+    num_moves = []
+    for i in range(num_games):
+        num_moves.append(single_game(num_players))
+    return num_moves
 
 
 def multi_game_experiment(num_games, num_players, seed):
@@ -83,8 +101,19 @@ def multi_game_experiment(num_games, num_players, seed):
     Returns
     -------
     num_moves : list
-        List with the numbedr of moves needed in each game.
+        List with the number of moves needed in each game.
     """
+    num_moves = []
+    random.seed(seed)
+    for i in range(num_games):
+        num_moves.append(single_game(num_players))
+    return num_moves
+
 
 if __name__ == '__main__':
-    print(single_game(3))
+    durations = multi_game_experiment(100, 4, 5)
+    print(f'Shortest duration: {min(durations)}\n'
+          f'Longest duration: {max(durations)}\n'
+          f'Median: {statistics.median(durations)}\n'
+          f'Mean duration: {statistics.mean(durations)}\n'
+          f'Standard deviation: {statistics.stdev(durations)}')
