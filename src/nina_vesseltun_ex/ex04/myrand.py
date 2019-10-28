@@ -6,6 +6,20 @@ __email__ = 'nive@nmbu.no'
 from random import randint
 
 
+class ListRand:
+    def __init__(self, liste):
+        self.liste = liste
+        self.current_idx = 0
+
+    def rand(self):
+        for i in self.liste:
+            if self.current_idx == len(self.liste):
+                raise RuntimeError
+            else:
+                self.current_idx += 1
+                yield i
+
+
 class LCGRand:
     def __init__(self, seed):
         self.seed = seed
@@ -17,25 +31,18 @@ class LCGRand:
         return self.seed
 
 
-class ListRand:
-
-    def __init__(self, liste):
-        self.liste = liste
-        self.index = -1
-
-    def rand(self):
-        self.index += 1
-        if self.index >= len(self.liste):
-            raise RuntimeError
-        else:
-            return self.liste[self.index]
-
-
 if __name__ == "__main__":
-    numbers = [randint(0, 10) for i in range(5)]
-    random_by_list = ListRand(numbers)
+    numbers = [randint(0, 100) for i in range(5)]
+    random_by_list_class = ListRand(numbers)
     random_by_LCG = LCGRand(3)
+    x = random_by_list_class.rand()
+    numbers = [4, 5, 29, 11]
+    lr = ListRand(numbers)
 
+
+"""
     for i in range(5):
-        print(f'By using ListRand: {random_by_list.rand()}')
-        print(f'By using LCGRand: {random_by_LCG.rand()}')
+        print(f'By using ListRand: {next(x)}', f'By using LCGRand: {random_by_LCG.rand()}')
+
+    print(next(x))
+"""
