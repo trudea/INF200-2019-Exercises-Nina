@@ -1,14 +1,19 @@
-class Even:
+class Squared:
     def __init__(self, liste):
         self.liste = liste
-        self.curren
 
-    def evenf(self):
-        for i in self.liste:
-            yield i
+    def squaring(self):
+        for j in [i*i for i in self.liste]:
+            yield j
 
-numbers = [1, 2, 3, 4]
-klasse = Even(numbers)
-iterasjoner = klasse.evenf()
-for j in iterasjoner:
-    print(j)
+def justagen(liste):
+    for i in liste:
+        yield i
+
+if __name__ == "__main__":
+    test = [1, 2, 3]
+    klassevariabelen = Squared(test)
+    generatorobjektet = klassevariabelen.squaring()
+    print(next(generatorobjektet))
+    print(next(generatorobjektet))
+
