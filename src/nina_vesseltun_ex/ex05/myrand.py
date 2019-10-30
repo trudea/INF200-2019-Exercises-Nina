@@ -52,11 +52,7 @@ class RandIter:
 
 
 if __name__ == "__main__":
-    instance = RandIter(LCGRand, 5)
-    instance_infinite = LCGRand(3)
-
     generator = LCGRand(1)
-    infinite_iterator = generator.infinite_random_sequence()
 
     for rand in generator.random_sequence(10):
         print(rand)
