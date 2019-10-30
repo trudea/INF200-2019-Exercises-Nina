@@ -32,9 +32,7 @@ class RandIter:
 
     def __iter__(self):
         if self.num_generated_numbers is not None:
-            raise RuntimeError(
-                'Iterator is already initialised'
-            )
+            raise RuntimeError('Iterator is already initialised')
         self.num_generated_numbers = 0
         return self
 
