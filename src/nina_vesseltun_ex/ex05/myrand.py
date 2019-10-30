@@ -7,50 +7,63 @@ from random import randint
 
 
 class LCGRand:
-    slope = 7 ** 5
-    congruence_class = 2 ** 31 - 1
+    a = 16807
+    m = 2 ** 31 - 1
 
     def __init__(self, seed):
-        self._hidden_state = seed
+        self.seed = seed
 
     def rand(self):
-        self._hidden_state *= self.slope
-        self._hidden_state %= self.congruence_class
-        return self._hidden_state
-
+        while True:
+            self.seed = self.a * self.seed % self.m
+            return self.seed
 
     def random_sequence(self, length):
         return RandIter(self, length)
 
-
     def infinite_random_sequence(self):
         while True:
-            yield randint(0,100)
+            yield self.rand()
+
 
 class RandIter:
     def __init__(self, random_number_generator, length):
         self.generator = random_number_generator
         self.length = length
-        self.num_generated_numbers = 0
-        self.current_idx = None
+        self.num_generated_numbers = None
 
     def __iter__(self):
-        self.current_idx = 0
+        if self.num_generated_numbers is not None:
+            raise RuntimeError(
+                'Can only be initialised as an iterator once'
+            )
+        self.num_generated_numbers = 0
         return self
 
     def __next__(self):
-        if self.current_idx is None:
+        if self.num_generated_numbers is None:
             raise RuntimeError(
-                f'{type(self)} is not initialised as an iterator.')
-        if self.current_idx == self.length:
+                'Cannot call ``next`` before the Polygon is initialised'
+                ' as an iterator'
+            )
+        if self.num_generated_numbers == self.length:
             raise StopIteration
-        generator = self.generator[self.current_idx]
-        self.current_idx += 1
-        return generator
+        generated_number = self.generator.rand()
+        self.num_generated_numbers += 1
+        return generated_number
 
 
 if __name__ == "__main__":
-    generator = LCGRand(1)
-    for i in generator.random_sequence(10):
-        print(i)
+    instance = RandIter(LCGRand, 5)
+    instance_infinite = LCGRand(3)
 
+    generator = LCGRand(1)
+    infinite_iterator = generator.infinite_random_sequence()
+
+    for rand in generator.random_sequence(10):
+        print(rand)
+
+    for i, rand in enumerate(generator.infinite_random_sequence()):
+        print(f'The {i}-th random number is {rand}')
+        if i > 100:
+            break

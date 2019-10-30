@@ -33,7 +33,8 @@ class BoundedSimulation(Simulation):
         self.right_limit = right_limit
 
     def single_walk(self):
-        pedestrian = BoundedWalker(self.start, self.home, self.left_limit, self.right_limit)
+        pedestrian = BoundedWalker(self.start, self.home, self.left_limit,
+                                   self.right_limit)
         play = True
         while play:
             pedestrian.move()
