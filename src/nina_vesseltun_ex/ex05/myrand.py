@@ -33,17 +33,14 @@ class RandIter:
     def __iter__(self):
         if self.num_generated_numbers is not None:
             raise RuntimeError(
-                'Can only be initialised as an iterator once'
+                'Iterator is already initialised'
             )
         self.num_generated_numbers = 0
         return self
 
     def __next__(self):
         if self.num_generated_numbers is None:
-            raise RuntimeError(
-                'Cannot call ``next`` before the Polygon is initialised'
-                ' as an iterator'
-            )
+            raise RuntimeError('RandIter is not initialised yet')
         if self.num_generated_numbers == self.length:
             raise StopIteration
         generated_number = self.generator.rand()

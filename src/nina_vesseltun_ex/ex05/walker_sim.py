@@ -39,11 +39,8 @@ class Simulation:
 
     def single_walk(self):
         pedestrian = Walker(self.start, self.home)
-        play = True
-        while play:
+        while not pedestrian.is_at_home():
             pedestrian.move()
-            if pedestrian.is_at_home():
-                play = False
         return pedestrian.get_steps()
 
     def run_simulation(self, num_walks):

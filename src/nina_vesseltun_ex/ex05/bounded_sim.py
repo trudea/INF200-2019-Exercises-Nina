@@ -18,15 +18,13 @@ class BoundedWalker(Walker):
         self.right_limit = right_lim
 
     def move(self):
+        self.steps += 1
         if randint(0, 1):
             if self.x < self.right_limit:
                 self.x += 1
-                self.steps += 1
         else:
             if self.x > self.left_limit:
                 self.x -= 1
-                self.steps += 1
-
 
 class BoundedSimulation(Simulation):
     def __init__(self, start, home, seed, left_lim, right_lim):
@@ -37,11 +35,8 @@ class BoundedSimulation(Simulation):
     def single_walk(self):
         pedestrian = BoundedWalker(self.start, self.home, self.left_limit,
                                    self.right_limit)
-        play = True
-        while play:
+        while not pedestrian.is_at_home():
             pedestrian.move()
-            if pedestrian.is_at_home():
-                play = False
         return pedestrian.get_steps()
 
 
