@@ -19,11 +19,11 @@ class BoundedWalker(Walker):
 
     def move(self):
         if randint(0, 1):
-            if self.x < right_limit:
+            if self.x < self.right_limit:
                 self.x += 1
                 self.steps += 1
         else:
-            if self.x > left_limit:
+            if self.x > self.left_limit:
                 self.x -= 1
                 self.steps += 1
 
