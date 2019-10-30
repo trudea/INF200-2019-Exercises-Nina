@@ -4,16 +4,18 @@ __author__ = 'Nina Mariann Vesseltun'
 __email__ = 'nive@nmbu.no'
 
 
-from walker_sim import Walker
-from walker_sim import Simulation
 from random import randint
+# noinspection PyUnresolvedReferences
+from walker_sim import Simulation
+# noinspection PyUnresolvedReferences
+from walker_sim import Walker
 
 
 class BoundedWalker(Walker):
-    def __init__(self, start, home, left_limit, right_limit):
+    def __init__(self, start, home, left_lim, right_lim):
         super().__init__(start, home)
-        self.left_limit = left_limit
-        self.right_limit = right_limit
+        self.left_limit = left_lim
+        self.right_limit = right_lim
 
     def move(self):
         if randint(0, 1):
@@ -27,10 +29,10 @@ class BoundedWalker(Walker):
 
 
 class BoundedSimulation(Simulation):
-    def __init__(self, start, home, seed, left_limit, right_limit):
+    def __init__(self, start, home, seed, left_lim, right_lim):
         super().__init__(start, home, seed)
-        self.left_limit = left_limit
-        self.right_limit = right_limit
+        self.left_limit = left_lim
+        self.right_limit = right_lim
 
     def single_walk(self):
         pedestrian = BoundedWalker(self.start, self.home, self.left_limit,

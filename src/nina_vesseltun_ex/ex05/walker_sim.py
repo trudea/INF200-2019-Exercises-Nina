@@ -32,10 +32,10 @@ class Walker:
 
 
 class Simulation:
-    def __init__(self, start, home, seed):
+    def __init__(self, start, home, the_seed):
         self.start = start
         self.home = home
-        self.seed = seed
+        self.seed = the_seed
 
     def single_walk(self):
         pedestrian = Walker(self.start, self.home)

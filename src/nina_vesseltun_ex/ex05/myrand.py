@@ -3,8 +3,6 @@
 __author__ = 'Nina Mariann Vesseltun'
 __email__ = 'nive@nmbu.no'
 
-from random import randint
-
 
 class LCGRand:
     a = 16807
