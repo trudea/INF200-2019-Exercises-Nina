@@ -32,10 +32,8 @@ class Walker:
 def walking(start, goal):
     pedestrian = Walker(start, goal)
     play = True
-    while play:
+    while not pedestrian.is_at_home():
         pedestrian.move()
-        if pedestrian.is_at_home():
-            play = False
     return pedestrian.get_steps()
 
 

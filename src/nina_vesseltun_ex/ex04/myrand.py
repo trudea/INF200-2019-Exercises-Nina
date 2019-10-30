@@ -22,13 +22,13 @@ class ListRand:
 
 class LCGRand:
     def __init__(self, seed):
+        self.a = 16807
+        self.m = 2 ** 31 - 1
         self.seed = seed
 
     def rand(self):
-        a = 16807
-        m = 2 ** 31 - 1
         while True:
-            self.seed = a * self.seed % m
+            self.seed = self.a * self.seed % self.m
             return self.seed
 
 
