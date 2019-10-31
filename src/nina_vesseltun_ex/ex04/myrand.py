@@ -21,9 +21,10 @@ class ListRand:
 
 
 class LCGRand:
+    a = 16807
+    m = 2 ** 31 - 1
+
     def __init__(self, seed):
-        self.a = 16807
-        self.m = 2 ** 31 - 1
         self.seed = seed
 
     def rand(self):
@@ -34,7 +35,6 @@ class LCGRand:
 
 if __name__ == "__main__":
     numbers = [randint(0, 100) for i in range(5)]
-    print(numbers)
     ListRand_instance = ListRand(numbers)
     LCG_instance = LCGRand(3)
     for _ in range(5):
