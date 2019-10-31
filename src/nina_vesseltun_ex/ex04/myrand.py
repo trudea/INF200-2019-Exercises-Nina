@@ -28,9 +28,8 @@ class LCGRand:
         self.seed = seed
 
     def rand(self):
-        while True:
-            self.seed = self.a * self.seed % self.m
-            return self.seed
+        self.seed = self.a * self.seed % self.m
+        return self.seed
 
 
 if __name__ == "__main__":
