@@ -19,7 +19,7 @@ class TestBoard:
 
     def test_constructor_default(self):
         """Default constructor callable."""
-        b = cs.Board([], [], 90)
+        b = cs.Board()
         assert isinstance(b, cs.Board)
 
     def test_constructor_args(self):
@@ -35,12 +35,12 @@ class TestBoard:
 
     def test_goal_reached(self):
         """goal_reached() callable and returns bool"""
-        b = cs.Board([], [], 90)
+        b = cs.Board()
         assert isinstance(b.goal_reached(1), bool)
 
     def test_position_adjustment(self):
         """position_adjustment callable and returns number"""
-        b = cs.Board([], [], 90)
+        b = cs.Board()
         assert isinstance(b.position_adjustment(1), (int, float))
 
 
@@ -51,7 +51,7 @@ class TestPlayer:
 
     def test_constructor(self):
         """Player can be constructed."""
-        b = cs.Board([], [], 90)
+        b = cs.Board()
         p = cs.Player(b)
         assert isinstance(p, cs.Player)
 
