@@ -6,7 +6,9 @@ __email__ = 'Trude.haug.almestrand@nmbu.no', 'nive@nmbu.no'
 class Board():
     c = [(24, 5), (33, 3), (42, 30), (56, 37), (64, 27), (74, 12), (87, 70)]
     l = [(1, 40), (8, 10), (36, 52), (43, 62), (49, 79), (65, 82), (68, 85)]
-    def __init__(self, chutes=c, ladders=l, goal=90):
+    def __init__(self, chutes=[(24, 5), (33, 3), (42, 30), (56, 37), (64, 27),
+        (74, 12), (87, 70)], ladders=[(1, 40), (8, 10), (36, 52), (43, 62),
+                                      (49, 79), (65, 82), (68, 85)], goal=90):
         self.chutes = chutes
         self.ladders = ladders
         self.goal = goal
@@ -26,9 +28,13 @@ class Board():
             return 0
 
 
-class Player(Board):
-    def __init__(self, chutes, ladders, goal):
-        super().__init__(chutes, ladders, goal)
+class Player:
+    def __init__(self, board):
+        self.board = board
+
+    def move(self):
+        pass
 
 b = Board()
-print(b.position_adjustment(24))
+p = Player(b)
+
