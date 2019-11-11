@@ -24,5 +24,3 @@ class Board():
 
 class Player(Board):
     def __init__(self, chutes, ladders, goals):
-        super().__init__(self.chutes, self.ladders, self.goals)
-
