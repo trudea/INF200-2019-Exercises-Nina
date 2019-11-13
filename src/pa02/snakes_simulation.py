@@ -68,31 +68,30 @@ class Simulation:
         player_list = []
         for field in self.player_field:
             player_list.append(field(self.board))
-        print(type(player_list[0]))
         while True:
             for player in player_list:
                 player.move()
-                moves += 1
                 if self.board.goal_reached(player.position):
-                    return moves, print(player)
-
-    def get_results(self):
-        return self.results
+                    # return moves, str(player.__class__.__name__)
+                    return moves, type(player).__name__
+            moves += 1
 
     def run_simulation(self, games=1):
         temp_results = [0]*games
         for i in range(games):
             temp_results[i] = self.single_game()
-        self.results.append(temp_results)
+        self.results += temp_results
+
+    def get_results(self):
+        return self.results
 
     def simulation_results(self):
         pass
 
 
-
-
 b = Board()
 p = Player(b)
-s = Simulation([Player])
-print(type(s.single_game()))
-
+s = Simulation([Player, Player, Player])
+s.run_simulation(3)
+s.run_simulation(1)
+r = s.get_results()
