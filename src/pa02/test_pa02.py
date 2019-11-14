@@ -29,7 +29,15 @@ def test_lazy_player():
     p.move()
     assert p.position == 15
 
-
+def test_random_order():
+    """Adds test to see if elements in a list is same sorted as unsorted"""
+    list_of_players = [cs.Player, cs.LazyPlayer, cs.ResilientPlayer]
+    b = cs.Board()
+    s1 = cs.Simulation(list_of_players, b, 999)
+    s2 = cs.Simulation(list_of_players, b, 999, False)
+    dict1 = s1.players_per_type()
+    dict2 = s2.players_per_type()
+    assert dict1 == dict2
 
 
 
