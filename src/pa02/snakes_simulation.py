@@ -76,7 +76,7 @@ class LazyPlayer(Player):
 
 
 class Simulation:
-    def __init__(self, player_field, board=None, seed=999, randomize_players=True):
+    def __init__(self, player_field, board=None, seed=None, randomize_players=True):
         self.player_field = player_field
         self.board = board
         self.results = []
@@ -140,23 +140,3 @@ class Simulation:
             else:
                 player_types[player] += 1
         return  player_types
-
-
-
-
-
-
-"""
-b = Board()
-p = Player(b)
-s = Simulation([Player, Player, Player])
-s.run_simulation(2)
-print(len(s.get_results()))
-s.run_simulation(1)
-print(len(s.get_results()))
-r = s.get_results()
-"""
-s = Simulation([Player, LazyPlayer, ResilientPlayer])
-p = s.players_per_type()
-print(p)
-assert all(k in ['Player', 'LazyPlayer', 'ResilientPlayer'] for k in p.keys())
