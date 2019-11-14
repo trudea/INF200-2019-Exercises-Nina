@@ -4,7 +4,7 @@ __author__ = 'Trude Haug Almestrand', 'Nina Mariann Vesseltun'
 __email__ = 'Trude.haug.almestrand@nmbu.no', 'nive@nmbu.no'
 
 
-from random import randint
+from random import randint, shuffle
 
 
 class Board():
@@ -44,20 +44,42 @@ class ResilientPlayer(Player):
     def __init__(self, board, extra_steps=1):
         super().__init__(board)
         self.extra_steps = extra_steps
+        self.added_steps = 0
+
+    def move(self):
+        self.position += randint(1, 6) + self.added_steps
+        remembered_position = self.position
+        self.position += self.board.position_adjustment(
+        self.position)
+        if self.position < remembered_position:
+            self.added_steps = self.extra_steps
+        else:
+            self.added_steps = 0
 
 
 class LazyPlayer(Player):
     def __init__(self, board, dropped_steps=1):
         super().__init__(board)
         self.dropped_steps = dropped_steps
+        self.steps_back = 0
+
+    def move(self):
+        dice = randint(1,6)
+        if dice - self.steps_back >= 0:
+            self.position += dice - self.steps_back
+        remembered_position = self.position
+        self.position += self.board.position_adjustment(self.position)
+        if self.position > remembered_position:
+            self.steps_back = self.dropped_steps
+        else:
+            self.steps_back = 0
 
 
 class Simulation:
-    results = []
-
     def __init__(self, player_field, board=None, seed=999, randomize_players=True):
         self.player_field = player_field
         self.board = board
+        self.results = []
         if not self.board:
             self.board = Board()
         self.seed = seed
@@ -68,6 +90,8 @@ class Simulation:
         player_list = []
         for field in self.player_field:
             player_list.append(field(self.board))
+        if self.randomize_players:
+            shuffle(player_list)
         while True:
             for player in player_list:
                 player.move()
@@ -85,13 +109,54 @@ class Simulation:
     def get_results(self):
         return self.results
 
-    def simulation_results(self):
-        pass
+    def winners_per_type(self):
+        winners = {}
+        for i in range(len(self.results)):
+            if self.results[i][1] not in winners:
+                winners[self.results[i][1]] = 1
+            else:
+                winners[self.results[i][1]] += 1
+        return winners
+
+    def durations_per_type(self):
+        durations = {}
+        for i in range(len(self.results)):
+            if self.results[i][1] not in durations:
+                durations[self.results[i][1]] = [self.results[i][0]]
+            else:
+                durations[self.results[i][1]].append(self.results[i][0])
+        return durations
+
+    def players_per_type(self):
+        player_types = {}
+        player_list = []
+        for field in self.player_field:
+            player_list.append(field(self.board))
+        for i in range(len(player_list)):
+            player_list[i] = type(player_list[i]).__name__
+        for player in player_list:
+            if player not in player_types:
+                player_types[player] = 1
+            else:
+                player_types[player] += 1
+        return  player_types
 
 
+
+
+
+
+"""
 b = Board()
 p = Player(b)
 s = Simulation([Player, Player, Player])
-s.run_simulation(3)
+s.run_simulation(2)
+print(len(s.get_results()))
 s.run_simulation(1)
+print(len(s.get_results()))
 r = s.get_results()
+"""
+s = Simulation([Player, LazyPlayer, ResilientPlayer])
+p = s.players_per_type()
+print(p)
+assert all(k in ['Player', 'LazyPlayer', 'ResilientPlayer'] for k in p.keys())
