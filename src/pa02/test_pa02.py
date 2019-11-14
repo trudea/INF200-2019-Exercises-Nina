@@ -7,6 +7,7 @@ import src.pa02.snakes_simulation as cs
 import pytest
 import random
 
+
 def test_resilient_player():
     """Checking if ResilientPlayer behaves as desired"""
     random.seed(999)
@@ -18,6 +19,7 @@ def test_resilient_player():
     p.move()
     assert p.position == 37
 
+
 def test_lazy_player():
     """Checking if LazyPlayer behaves as desired"""
     random.seed(999)
@@ -28,6 +30,7 @@ def test_lazy_player():
     random.seed(999)
     p.move()
     assert p.position == 15
+
 
 def test_random_order():
     """Adds test to see if elements in a list is same sorted as unsorted"""
