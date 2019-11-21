@@ -4,7 +4,6 @@ __author__ = 'Trude Haug Almestrand', 'Nina Mariann Vesseltun'
 __email__ = 'Trude.haug.almestrand@nmbu.no', 'nive@nmbu.no'
 
 import src.pa02.snakes_simulation as cs
-import pytest
 import random
 
 
