@@ -41,7 +41,3 @@ def test_random_order():
     dict1 = s1.players_per_type()
     dict2 = s2.players_per_type()
     assert dict1 == dict2
-
-
-
-
