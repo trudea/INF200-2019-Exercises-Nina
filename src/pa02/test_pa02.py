@@ -110,6 +110,7 @@ def test_run_simulation():
 
 
 def test_get_results():
+    """Checking if get_results works"""
     s = cs.Simulation(player_field=[cs.Player, cs.ResilientPlayer,
                                     cs.LazyPlayer], seed=999)
     s.run_simulation(2)
