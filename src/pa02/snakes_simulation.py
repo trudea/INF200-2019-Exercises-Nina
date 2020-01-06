@@ -7,11 +7,8 @@ __email__ = 'Trude.haug.almestrand@nmbu.no', 'nive@nmbu.no'
 from random import randint, shuffle
 
 
-class Board():
-    chu = [(24, 5), (33, 3), (42, 30), (56, 37), (64, 27), (74, 12), (87, 70)]
-    lad = [(1, 40), (8, 10), (36, 52), (43, 62), (49, 79), (65, 82), (68, 85)]
-
-    def __init__(self, chutes=chu, ladders=lad, goal=90):
+class Board:
+    def __init__(self, chutes=None, ladders=None, goal=90):
         """
 
         :param chutes: Lists of tuples with start and end positions for chutes
@@ -20,7 +17,13 @@ class Board():
         :param goal: End position for board
         """
         self.chutes = chutes
+        if not self.chutes:
+            self.chutes = [(24, 5), (33, 3), (42, 30), (56, 37), (64, 27),
+                           (74, 12), (87, 70)]
         self.ladders = ladders
+        if not self.ladders:
+            self.ladders = [(1, 40), (8, 10), (36, 52), (43, 62), (49, 79),
+                            (65, 82), (68, 85)]
         self.goal = goal
 
     def goal_reached(self, position):

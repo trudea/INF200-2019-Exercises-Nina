@@ -9,7 +9,6 @@ __email__ = 'hans.ekkehard.plesser@nmbu.no'
 
 
 import src.pa02.snakes_simulation as cs
-import pytest
 
 
 class TestBoard:
