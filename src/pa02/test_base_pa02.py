@@ -8,8 +8,12 @@ __author__ = 'Hans Ekkehard Plesser'
 __email__ = 'hans.ekkehard.plesser@nmbu.no'
 
 
+<<<<<<< Updated upstream
 import src.pa02.snakes_simulation as cs
+=======
+import snakes_simulation as cs
 import pytest
+>>>>>>> Stashed changes
 
 
 class TestBoard:
